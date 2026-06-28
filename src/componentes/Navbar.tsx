@@ -8,7 +8,7 @@ const navLinks = [
   { label: "Home", to: "/" },
   { label: "Sobre", to: "/sobre" },
   { label: "Projetos", to: "/projetos" },
-  { label: "Galeria", to: "/Galeria" },
+  { label: "Ações", to: "/acoes" },
   { label: "Contato", to: "/contato" },
 ];
 
@@ -32,7 +32,7 @@ export function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled || menuOpen
             ? "bg-background/95 backdrop-blur-md border-b border-border"
-            : "bg-transparent"
+            : "bg-gradient-to-b from-background/80 via-background/30 to-transparent"
           }`}
       >
         <div className="container mx-auto px-6 h-16 md:h-20 flex items-center justify-between">
@@ -51,9 +51,9 @@ export function Navbar() {
               <Link
                 key={link.to}
                 to={link.to}
-                className={`font-body text-sm font-500 tracking-wide uppercase transition-colors duration-200 relative group ${location.pathname === link.to
+                className={`font-body text-sm font-500 tracking-wide uppercase transition-colors duration-200 relative group ${scrolled || menuOpen ? "" : "[text-shadow:_0_1px_8px_rgba(0,0,0,0.55)]"} ${location.pathname === link.to
                     ? "text-yellow"
-                    : "text-foreground/70 hover:text-foreground"
+                    : "text-foreground/90 hover:text-foreground"
                   }`}
               >
                 {link.label}
@@ -65,7 +65,7 @@ export function Navbar() {
             ))}
             <Link
               to="/doacoes"
-              className="ml-2 border border-yellow/40 text-yellow/70 font-display text-xs tracking-widest px-5 py-2 hover:border-yellow hover:text-yellow transition-colors duration-200"
+              className="ml-2 border border-yellow/60 text-yellow font-display text-xs tracking-widest px-5 py-2 hover:border-yellow hover:bg-yellow hover:text-primary-foreground transition-colors duration-200"
             >
               APOIE
             </Link>

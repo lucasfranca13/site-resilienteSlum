@@ -7,6 +7,9 @@ import aboutImg from "@/ativos/sobre.jpg";
 import projetoCultura from "@/ativos/fotoHome-Curso.jpg";
 import projetoEsporte from "@/ativos/foto-SlumNaRua.jpg";
 import projetoDesenvolvimento from "@/ativos/fotoHome-educacao.jpg";
+import depoLucas from "@/ativos/depoimentos/lucasfilipefn.jpg";
+import depoNatan from "@/ativos/depoimentos/natan10.jpg";
+import depoGuilherme from "@/ativos/depoimentos/guilherme.jpg";
 
 function useCountUp(target: number, duration = 2000, start = false) {
   const [count, setCount] = useState(0);
@@ -61,6 +64,24 @@ const projects = [
   { title: "Desenvolvimento Pessoal", desc: "Procuramos criar ambientes de desenvolvimento para os jovens, com eventos e palestras que os ajudem a explorar seu potencial.", img: projetoDesenvolvimento, tag: "Desenvolvimento" },
 ];
 
+const depoimentos = [
+  {
+    handle: "@lucasfilipefn",
+    avatar: depoLucas,
+    text: "É um projeto muito bom e importante para a comunidade, onde oferece uma direção e orientação para os jovens, além de proporcionar e incentivar a prática do lazer e esporte!",
+  },
+  {
+    handle: "@natan10_pvd",
+    avatar: depoNatan,
+    text: "Pô, sem dúvidas o Slum é um projeto que faz a diferença na vida de jovens como eu em diversos aspectos. O Slum vai fazer diferença nas comunidades, gratidão sempre!",
+  },
+  {
+    handle: "@guilherme_souza118",
+    avatar: depoGuilherme,
+    text: "Esse projeto entrou na minha vida na hora que eu mais precisava. Sem dúvidas, um dia inesquecível — que emoção poder participar do Slum!",
+  },
+];
+
 const Index = () => {
   return (
     <div className="min-h-screen bg-background grain-overlay">
@@ -94,7 +115,7 @@ const Index = () => {
               variants={fadeUp}
               className="font-body text-base md:text-lg text-foreground/70 max-w-lg mb-8"
             >
-              Transformando a periferia através da educação, cultura e esporte. Porque ser da favela é ser forte.
+              Transformando a vida de crianças, adolescentes e jovens da periferia através da educação, cultura e esporte. Porque ser da favela é ser forte.
             </motion.p>
             <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
               <Link
@@ -164,7 +185,7 @@ const Index = () => {
                 <span className="text-yellow">QUEBRADA</span>
               </h2>
               <p className="font-body text-foreground/70 leading-relaxed">
-                Somos o Resiliente Slum, organização que visa desenvolver o potencial ilimitado dos jovens e suas famílias. Atuamos com educação, esporte, cultura, empreendedorismo e desenvolvimento pessoal.
+                Somos o Resiliente Slum, organização que visa desenvolver o potencial ilimitado das crianças, jovens e suas famílias. Atuamos com educação, esporte, cultura, empreendedorismo e desenvolvimento pessoal.
               </p>
               <p className="font-body text-foreground/70 leading-relaxed">
                 Trabalhamos para que o jovem se perceba como sujeito livre, com direitos e deveres, podendo ser autor e protagonista da sua história e ir em busca de um futuro cada vez melhor.
@@ -246,13 +267,9 @@ const Index = () => {
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { name: "Lucas Silva", age: "17 anos", text: "O projeto mudou minha vida. Hoje eu sei programar e tenho um futuro pela frente que antes eu não conseguia enxergar.", tag: "Tech" },
-              { name: "Ana Beatriz", age: "15 anos", text: "Nas oficinas de arte eu descobri que minha voz importa. Agora uso o grafite pra contar a história da minha comunidade.", tag: "Arte" },
-              { name: "Carlos Eduardo", age: "19 anos", text: "O esporte me tirou da rua e me deu disciplina. Hoje sou instrutor e ajudo outros jovens a encontrarem o caminho deles.", tag: "Esporte" },
-            ].map((dep, i) => (
+            {depoimentos.map((dep, i) => (
               <motion.div
-                key={dep.name}
+                key={dep.handle}
                 initial={{ opacity: 0, y: 32 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -264,13 +281,13 @@ const Index = () => {
                   {dep.text}
                 </p>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-yellow/20 border border-yellow/30 flex items-center justify-center font-display text-yellow text-sm">
-                    {dep.name.charAt(0)}
-                  </div>
-                  <div>
-                    <p className="font-display text-sm text-foreground tracking-wide">{dep.name}</p>
-                    <p className="font-body text-xs text-muted-foreground">{dep.age} · {dep.tag}</p>
-                  </div>
+                  <img
+                    src={dep.avatar}
+                    alt={dep.handle}
+                    loading="lazy"
+                    className="w-11 h-11 rounded-full object-cover border border-yellow/30 grayscale group-hover:grayscale-0 transition-all duration-300"
+                  />
+                  <p className="font-display text-sm text-yellow tracking-wide">{dep.handle}</p>
                 </div>
               </motion.div>
             ))}

@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import Index from "./paginas/Index";
 import Sobre from "./paginas/Sobre";
 import Projetos from "./paginas/Projetos";
-import Galeria from "./paginas/Galeria";
+import Acoes from "./paginas/Acoes";
 import Contato from "./paginas/Contato";
 import NotFound from "./paginas/NotFound";
 import Doacoes from "./paginas/Doacoes";
@@ -46,7 +46,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/sobre" element={<Sobre />} />
             <Route path="/projetos" element={<Projetos />} />
-            <Route path="/galeria" element={<Galeria />} />
+            <Route path="/acoes" element={<Acoes />} />
             <Route path="/contato" element={<Contato />} />
             <Route path="/doacoes" element={<Doacoes />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
